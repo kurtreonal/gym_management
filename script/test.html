@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.navbar {
+  background-color: #000;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.navbar .logo {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 5rem;
+}
+
+.navbar .nav-links li a {
+  color: #9c7a0e;
+  text-decoration: none;
+  padding: 8px;
+  font-size: 20px;
+}
+
+.navbar .nav-links li a:hover,
+.navbar .nav-links li .signup-btn {
+  background-color: #fff;
+  color: #000;
+  border-radius: 5px;
+}
+
+/* MOBILE MENU */
+@media (max-width: 768px) {
+  .menu-toggle {
+    position: absolute;
+    left: 1.5rem;
+    font-size: 1.8rem;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .navbar .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .navbar .nav-links {
+    flex-direction: column;
+    gap: 2rem;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100vh;
+    background-color: #000;
+    justify-content: center;
+    align-items: center;
+    transition: left 0.3s ease;
+    display: flex;
+    z-index: 1000;
+    padding-left: 0;
+  }
+
+  .navbar .nav-links.show {
+    left: 0;
+  }
+
+  .signup-btn {
+    display: none;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+  <nav class="navbar">
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <div class="logo">The Fighters Club</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home">HOME</a></li>
+      <li><a href="#utility">UTILITY ACCESS</a></li>
+      <li><a href="#videos">VIDEOS</a></li>
+      <li><a href="pricing.php" onclick="event.stopPropagation();">PRICING</a></li>
+      <li><a href="#shop">SHOP</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+    <a href="#signup" class="signup-btn">Sign Up</a>
+  </nav>
+</header>
+
+
+<script>
+    const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('show');
+});
+
+// Optional: close sidebar when clicking a nav link (for better UX)
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('show');
+  });
+});
+</script>
+</body>
+</html>

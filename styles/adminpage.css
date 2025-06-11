@@ -1,0 +1,124 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #000, gold);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: gold;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 12px;
+    font-size: 24px;
+}
+
+/* Main content wrapper with sidebar space */
+.main_content {
+    margin-left: 24%;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    margin: auto;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow-x: auto;
+    table-layout: auto;
+    background-color: #1a1a1a;
+}
+
+th, td {
+    padding: 8px 10px;
+    border: 1px solid gold;
+    text-align: left;
+    vertical-align: middle;
+    word-break: break-word;
+    font-size: 13px;
+}
+
+th {
+    background-color: #222;
+    color: gold;
+    text-align: center;
+    white-space: nowrap;
+}
+
+td {
+    color: white;
+}
+
+/* Prevent wrapping of short entries like 'ID' */
+th:first-child,
+td:first-child {
+    white-space: nowrap;
+    word-break: normal;
+}
+
+/* Input fields that match the table */
+.cell-input {
+    width: 100%;
+    font-size: 13px;
+    color: white;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+/* When in edit mode */
+.cell-input:focus:not([readonly]),
+.cell-input:not([readonly]) {
+    background: #333;
+    border: 1px solid gold;
+    border-radius: 4px;
+    padding: 4px;
+    color: white;
+}
+
+/* Buttons */
+.edit-btn,
+.save-btn {
+    background: gold;
+    border: none;
+    color: #111;
+    padding: 7px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.save-btn {
+    display: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    table {
+        font-size: 13px;
+        width: 95%;
+    }
+
+    th, td {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .main_content {
+        margin: 0;
+        padding: 10px;
+    }
+
+    .edit-btn,
+    .save-btn {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+}
