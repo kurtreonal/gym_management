@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
     session_start();
     $is_logged_in = isset($_SESSION['user_id']);
@@ -7,8 +6,6 @@
     include 'connection.php';
     $plans = $con->query("SELECT * FROM Membership_plan");
 ?>
-=======
->>>>>>> d27fa360e6497a947b0e3f18734c7d7c7f921c3f
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,17 +48,10 @@
         </ul>
         </div>
         <div class="navbar-icons">
-<<<<<<< HEAD
             <a href="<?php echo $is_logged_in ? 'dashboard.php' : 'sign-in.php'; ?>" class="signup-btn">
                 <svg aria-hidden="true" fill="none" focusable="false" width="24" viewBox="0 0 24 24">
                     <path d="M16.125 8.75c-.184 2.478-2.063 4.5-4.125 4.5s-3.944-2.021-4.125-4.5c-.187-2.578 1.64-4.5 4.125-4.5 2.484 0 4.313 1.969 4.125 4.5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
                     <path d="M3.017 20.747C3.783 16.5 7.922 14.25 12 14.25s8.217 2.25 8.984 6.497" stroke="currentColor" stroke-width="1.6" stroke-miterlimit="10"></path>
-=======
-            <a href="sign-in.php" class="signup-btn" onclick="event.stopPropagation();">
-                <svg aria-hidden="true" fill="none" focusable="false" width="24" viewBox="0 0 24 24">
-                <path d="M16.125 8.75c-.184 2.478-2.063 4.5-4.125 4.5s-3.944-2.021-4.125-4.5c-.187-2.578 1.64-4.5 4.125-4.5 2.484 0 4.313 1.969 4.125 4.5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M3.017 20.747C3.783 16.5 7.922 14.25 12 14.25s8.217 2.25 8.984 6.497" stroke="currentColor" stroke-width="1.6" stroke-miterlimit="10"></path>
->>>>>>> d27fa360e6497a947b0e3f18734c7d7c7f921c3f
                 </svg>
             </a>
             <div class="cart-container">
@@ -89,7 +79,6 @@
         </nav>
     </header>
 
-<<<<<<< HEAD
     <section class="pricing-section pricing">
         <div class="pricing-container">
             <h2>Our Membership Plans</h2>
@@ -118,47 +107,6 @@
     </section>
 
 
-=======
-    <section id="pricing" class="pricing-section pricing">
-    <div class="pricing-container">
-        <h2 style="color: gold;">Membership Pricing</h2>
-        <p>We grow when you grow, with pricing that matches your style.</p>
-        <div class="pricing-cards">
-        <div class="pricing-card">
-            <h3>BASIC</h3>
-            <p class="price">₱1,000/month</p>
-            <ul>
-            <li>Access to gym equipment</li>
-            <li>Locker room access</li>
-            <li>1 group class per week</li>
-            </ul>
-            <a href="#signup" class="btn">SIGN UP</a>
-        </div>
-        <div class="pricing-card popular">
-            <h3>STANDARD</h3>
-            <p class="price">₱1,500/month</p>
-            <ul>
-            <li>All Basic features</li>
-            <li>Unlimited group classes</li>
-            <li>Nutrition consultation</li>
-            </ul>
-            <a href="#signup" class="btn-popular">SIGN UP</a>
-        </div>
-        <div class="pricing-card">
-            <h3>PREMIUM</h3>
-            <p class="price">₱2,000/month</p>
-            <ul>
-            <li>All Standard features</li>
-            <li>Personal trainer sessions</li>
-            <li>Priority support</li>
-            </ul>
-            <a href="#signup" class="btn">SIGN UP</a>
-        </div>
-        </div>
-    </div>
-    </section>
-
->>>>>>> d27fa360e6497a947b0e3f18734c7d7c7f921c3f
     <section id="contact" class="section contact" style="background-color: #111;">
         <div class="contact-container">
             <!-- Left: Google Map -->

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 function togglePasswordInput(button) {
     const td = button.parentElement;
     const input = td.querySelector('input[name="new_password"]');
@@ -39,27 +38,3 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-=======
-function enableEdit(btn) {
-    const row = btn.closest('tr');
-    const inputs = row.querySelectorAll('.cell-input');
-
-    inputs.forEach(input => input.removeAttribute('readonly'));
-
-    btn.style.display = 'none';
-    btn.nextElementSibling.style.display = 'inline-block';
-}
-
-function saveEdit(btn) {
-    const row = btn.closest('tr');
-    const inputs = row.querySelectorAll('.cell-input');
-
-    inputs.forEach(input => input.setAttribute('readonly', true));
-
-    btn.style.display = 'none';
-    btn.previousElementSibling.style.display = 'inline-block';
-
-    // You can add AJAX here to send updated data to the server
-    alert('Changes saved (client-side). Implement backend update logic.');
-}
->>>>>>> d27fa360e6497a947b0e3f18734c7d7c7f921c3f

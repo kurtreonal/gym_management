@@ -29,7 +29,6 @@
             <div class="_tab-group_t5b5j_88">
                 <div class="_tab-group-content">
                     <div class="_desktop-label_t5b5j_103">Manage Profiles</div>
-<<<<<<< HEAD
                     <a class="_tab_1n4dr_79" href="#"><h4>Admin Details</h4></a>
                 </div>
             </div>
@@ -37,9 +36,6 @@
                 <div class="_tab-group-content">
                     <div class="_desktop-label_t5b5j_103">Manage Membership Plans</div>
                     <a class="_tab_1n4dr_79" href="plan_details.php"><h4>Plan Details</h4></a>
-=======
-                    <a class="_tab_1n4dr_79" href="/dashboard/profile"><h4>Admin Details</h4></a>
->>>>>>> d27fa360e6497a947b0e3f18734c7d7c7f921c3f
                 </div>
             </div>
             <div class="_tab-group_t5b5j_88">
@@ -60,17 +56,12 @@
                 <div class="_desktop-label_t5b5j_103">Resources</div>
                     <a class="_tab_1n4dr_79" href="https://www.crossfit.com/faq" target="_blank"><h4>Help</h4></a>
                     <a class="_tab_1n4dr_79" href="https://www.crossfit.com/contact-us" target="_blank"><h4>Contact Us</h4></a>
-<<<<<<< HEAD
                 </div>
             </div>
             <div class="_tab-group_t5b5j_88">
                 <div class="_tab-group-content">
                     <div class="_desktop-label_t5b5j_103">Logout</div>
                     <a class="_tab_1n4dr_79" href="a-logout.php"><h4>Sign Out?</h4></a>
-=======
-                    <a class="_tab_1n4dr_hidden">..</a>
-                    <a class="_tab_1n4dr_hidden">..</a>
->>>>>>> d27fa360e6497a947b0e3f18734c7d7c7f921c3f
                 </div>
             </div>
         </nav>
