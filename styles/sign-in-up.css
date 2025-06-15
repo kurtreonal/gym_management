@@ -1,0 +1,147 @@
+body{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: "Oswald, din-next-w01-light";
+    font-size: 15px;
+    background: linear-gradient(to bottom, #000 0%, gold 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+}
+
+h1{
+    color: gold;
+    margin-bottom: 20px;
+    letter-spacing: 2.5px;
+    font-size: 32px;
+}
+
+form {
+    background-color: #222;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: inset 0 0 10px #000, 0 0 15px rgba(255, 215, 0, 0.2);
+    width: 650px;
+}
+
+.form-single-column {
+    background-color: #222;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: inset 0 0 10px #000, 0 0 15px rgba(255, 215, 0, 0.2);
+    width: 400px;
+    text-align: left;
+}
+
+
+.form_display {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+}
+
+.form_column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+}
+
+.left_column {
+    flex: 3;
+}
+
+.right_column {
+    flex: 2;
+}
+
+.form-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.input_deco{
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.3s ease-in-out;
+    font-size: 14px;
+}
+
+a{
+    text-decoration: none;
+    color: cadetblue;
+    font-size: 14px;
+    margin-top: 5px;
+    color: gold;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: gold;
+    color: #111;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: orange;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 8px 15px;
+    background-color: gold;
+    border: 2px solid gold;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/* Tablet: 768px */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 24px; /* Slightly smaller than desktop */
+    }
+
+    form {
+        width: 60%;
+        padding: 20px;
+        gap: 12px;
+    }
+
+    .form_display {
+    flex-direction: column;
+    }
+
+    .input_deco {
+        font-size: 13px;
+        padding: 9px;
+    }
+
+    button {
+        font-size: 13px;
+        padding: 9px 16px;
+    }
+
+    .back-button {
+        top: 15px;
+        left: 15px;
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+}

@@ -1,0 +1,80 @@
+[
+  {
+    "student_id": "S12338",
+    "name": "Kurt Pascua",
+    "course": "BSCS",
+    "year_level": 2,
+    "grades": [
+      { "subject": "DCIT55", "score": 87 },
+      { "subject": "GNED 14", "score": 92 },
+      { "subject": "DCIT 25", "score": 75 }
+    ]
+  },
+  {
+    "student_id": "S20251",
+    "name": "Sakura",
+    "course": "BSIT",
+    "year_level": 2,
+    "grades": [
+      { "subject": "DCIT55", "score": 78 },
+      { "subject": "ITEC50", "score": 88 },
+      { "subject": "COSC65", "score": 95 }
+    ]
+  },
+  {
+    "student_id": "S20252",
+    "name": "Arturia",
+    "course": "BSECE",
+    "year_level": 3,
+    "grades": [
+      { "subject": "GNED08", "score": 80 },
+      { "subject": "FITT04", "score": 73 },
+      { "subject": "MATH02", "score": 84 }
+    ]
+  },
+  {
+    "student_id": "S20250",
+    "name": "Illya",
+    "course": "BSCS",
+    "year_level": 1,
+    "grades": [
+      { "subject": "DCIT55", "score": 91 },
+      { "subject": "GNED14", "score": 89 },
+      { "subject": "ITEC50", "score": 85 },
+      { "subject": "COSC65", "score": 94 }
+    ]
+  },
+  {
+    "student_id": "S20257",
+    "name": "Medea",
+    "course": "BSIT",
+    "year_level": 4,
+    "grades": [
+      { "subject": "COSC70", "score": 81 },
+      { "subject": "COSC65", "score": 78 },
+      { "subject": "DCIT55", "score": 85 }
+    ]
+  },
+  {
+    "student_id": "S20254",
+    "name": "Shiki",
+    "course": "BSECE",
+    "year_level": 2,
+    "grades": [
+      { "subject": "FITT04", "score": 95 },
+      { "subject": "GNED08", "score": 82 },
+      { "subject": "DCIT55", "score": 90 }
+    ]
+  },
+  {
+    "student_id": "S20259",
+    "name": "Asagami",
+    "course": "BSCS",
+    "year_level": 3,
+    "grades": [
+      { "subject": "COSC65", "score": 99 },
+      { "subject": "DCIT55", "score": 97 },
+      { "subject": "ITEC50", "score": 92 }
+    ]
+  }
+]
