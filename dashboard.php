@@ -1,11 +1,15 @@
 <?php
 session_start();
+<<<<<<< HEAD
 include 'connection.php';
 
+=======
+>>>>>>> d27fa360e6497a947b0e3f18734c7d7c7f921c3f
 if (!isset($_SESSION['user_id'])) {
     header("Location: sign-in.php");
     exit;
 }
+<<<<<<< HEAD
 
 $user_id = $_SESSION['user_id'];
 
@@ -21,6 +25,10 @@ $profile_image = $user['profile_image'] ? 'data:image/jpeg;base64,' . base64_enc
 ?>
 
 
+=======
+?>
+
+>>>>>>> d27fa360e6497a947b0e3f18734c7d7c7f921c3f
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,6 +46,7 @@ $profile_image = $user['profile_image'] ? 'data:image/jpeg;base64,' . base64_enc
     <h1 style="margin-bottom: 5%;border-bottom: 1px solid #333;">DASHBOARD</h1>
     <!-- Profile Header -->
     <div class="profile-header">
+<<<<<<< HEAD
     <div class="profile-left">
         <div class="profile-image-wrapper">
         <img src="<?= $profile_image ?>" alt="Athlete Avatar" class="profile-image">
@@ -52,6 +61,23 @@ $profile_image = $user['profile_image'] ? 'data:image/jpeg;base64,' . base64_enc
     </div>
     </div>
 
+=======
+        <div class="profile-left">
+        <div class="profile-image-wrapper">
+            <img src="https://profilepicsbucket.crossfit.com/athlete-avatar.jpg" alt="Athlete Avatar" class="profile-image">
+            <a href="#" class="edit-photo-btn" title="Edit Photo">
+            ✎
+            </a>
+        </div>
+        <div class="profile-info">
+            <h1 class="athlete-name">Ayumu Uehara</h1>
+            <p class="join-date">Joined: Jun 10, 2025</p>
+            <p class="cfid">FCID #2869153</p>
+            <a href="/dashboard/profile" class="edit-profile-link">Edit Athlete Profile</a>
+        </div>
+        </div>
+    </div>
+>>>>>>> d27fa360e6497a947b0e3f18734c7d7c7f921c3f
 
     <!-- Dashboard Grid -->
     <div class="dashboard-grid">

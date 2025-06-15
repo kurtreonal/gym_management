@@ -40,7 +40,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" type="text/css" href="./styles/sign-in-up.css">
 </head>
 <body>
+<<<<<<< HEAD
     <a href="homepage.php">
+=======
+    <a href="test.php">
+>>>>>>> d27fa360e6497a947b0e3f18734c7d7c7f921c3f
         <button class="back-button">Back</button>
     </a>
     <h1>Sign In</h1>

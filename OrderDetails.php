@@ -18,6 +18,7 @@ $result = $con->query($sql);
 </head>
 <body>
     <?php include 'admin-sidebar.php'; ?>
+<<<<<<< HEAD
     <div class="main-content">
         <div class="container">
             <h1>All Orders</h1>
@@ -50,5 +51,65 @@ $result = $con->query($sql);
             </table>
         </div>
     </div>
+=======
+    <div class="main_content">
+    <h1>All Orders</h1>
+           <table>
+            <tr>
+                <th>Order ID</th>
+                <th>User</th>
+                <th>City</th>
+                <th>Admin ID</th>
+                <th>Status</th>
+                <th>Created</th>
+            </tr>
+            <?php
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>{$row['order_id']}</td>";
+                    echo "<td>{$row['first_name']} {$row['last_name']}</td>";
+                    echo "<td>{$row['city']}</td>";
+                    echo "<td>{$row['admin_id']}</td>";
+                    echo "<td><span class='status {$row['status']}'>{$row['status']}</span></td>";
+                    echo "<td>{$row['created_date']}</td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "<tr><td colspan='6'>No orders found.</td></tr>";
+            }
+            $con->close();
+            ?>
+        </table>
+    </div>
+
+    <style>
+        /* Status badge colors */
+
+.status {
+            padding: 4px 8px;
+            border-radius: 6px;
+            text-transform: capitalize;
+            font-weight: bold;
+        }
+
+        .status.processing {
+            background-color: #444;
+            color: gold;
+        }
+
+        .status.shipped {
+            background-color: #1e90ff;
+            color: white;
+        }
+
+        .status.delivered {
+            background-color: #28a745;
+            color: white;
+        }
+
+
+    </style>
+>>>>>>> d27fa360e6497a947b0e3f18734c7d7c7f921c3f
 </body>
 </html>

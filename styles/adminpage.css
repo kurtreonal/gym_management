@@ -6,7 +6,11 @@ html, body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+<<<<<<< HEAD
     color: white;
+=======
+    color: gold;
+>>>>>>> d27fa360e6497a947b0e3f18734c7d7c7f921c3f
     text-align: center;
 }
 
@@ -20,6 +24,7 @@ h1 {
     margin-left: 24%;
     padding: 20px;
 }
+<<<<<<< HEAD
 .container {
     background-color: #1a1a1a;
     padding: 2rem;
@@ -27,6 +32,8 @@ h1 {
     max-width: 900px;
     margin: 2rem auto;
 }
+=======
+>>>>>>> d27fa360e6497a947b0e3f18734c7d7c7f921c3f
 
 table {
     width: 100%;
@@ -129,6 +136,7 @@ td:first-child {
         padding: 4px 8px;
     }
 }
+<<<<<<< HEAD
 
 .cell-input {
   padding: 5px;
@@ -142,3 +150,5 @@ textarea.form-control {
   overflow: auto;
   min-height: 80px;
 }
+=======
+>>>>>>> d27fa360e6497a947b0e3f18734c7d7c7f921c3f
