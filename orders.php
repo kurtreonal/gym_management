@@ -12,8 +12,6 @@
     ?>
     <div class="main-content">
     <div class="content">
-        <h1 style="margin-bottom: 5%; border-bottom: 1px solid #333;">Athlete Profile</h1>
-
         <!-- Order History Section -->
         <div class="order-history-container">
         <h2 class="order-title">Order History</h2>

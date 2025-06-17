@@ -1,6 +1,21 @@
 <?php
+include 'connection.php';
 session_start();
 $is_logged_in = isset($_SESSION['user_id']);
+
+$admin_id = $_SESSION['admin_id'] ?? null;
+$shop_products = [];
+
+if ($admin_id) {
+    $stmt = $con->prepare("SELECT product_id, product_name, product_details, price, category, product_image FROM products WHERE admin_id = ?");
+    $stmt->bind_param("i", $admin_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
+        $shop_products[] = $row;
+    }
+    $stmt->close();
+}
 ?>
 
 <!DOCTYPE html>
@@ -78,11 +93,20 @@ $is_logged_in = isset($_SESSION['user_id']);
 
     <section id="home" class="hero">
         <div class="slider">
-            <img src="./assets/L-Men.jpeg" class="slide active" alt="Slide 1">
-            <img src="./assets/gym interior.png" class="slide" alt="Slide 2">
-            <img src="./assets/gym interior.webp" class="slide" alt="Slide 3">
-            <img src="./assets/gym dressingroom.png" class="slide" alt="Slide 4">
-            <img src="./assets/gym shop.png" class="slide" alt="Slide 5">
+            <?php
+            include 'connection.php';
+
+            // Only fetch images marked as 'background'
+            $res = $con->query("SELECT image_name FROM Images WHERE image_type = 'background' ORDER BY images_id ASC");
+            $isFirst = true;
+
+            while ($row = $res->fetch_assoc()):
+                $img = htmlspecialchars($row['image_name']);
+                $activeClass = $isFirst ? 'active' : '';
+                echo "<img src=\"./assets/$img\" class=\"slide $activeClass\" alt=\"Background Image\">";
+                $isFirst = false;
+            endwhile;
+            ?>
 
             <button class="prev">&#10094;</button>
             <button class="next">&#10095;</button>
@@ -94,6 +118,8 @@ $is_logged_in = isset($_SESSION['user_id']);
             </div>
         </div>
     </section>
+
+
 
     <section id="utility" class="section-util utility-section">
         <div class="utility-overlay">
@@ -206,48 +232,82 @@ $is_logged_in = isset($_SESSION['user_id']);
         <h1 class="font-edit">#OURMETHOD</h1>
         <div class="overlay">
             <div class="image-text">
-                <p class="paragraph-style">Every training session at our gym is designed with a specific goal—no wasted movements, no overtraining, and no room for lost motivation.
-                <span class="highlight">Regardless of your level of experience or inexperience, our skilled coaches are dedicated to helping you advance through discipline and focus.</span>
-                To help you train like an athlete—strong, confident, and goal-driven—each session is designed with customized routines, intelligent progression, and practical instruction.
-                <br><br>
-                All of our trainers complete more than 100 hours of in-house training centered on strength conditioning, perfect form, program design, and client-specific methods for
-                coaching to guarantee quality in every workout. Our head coach created this special training program, which raises the bar for the industry and provides all members
-                with access to the same top-notch training.</p>
+                <p class="paragraph-style">
+                    Every training session at our gym is designed with a specific goal—no wasted movements, no overtraining, and no room for lost motivation.
+                    <span class="highlight">Regardless of your level of experience or inexperience, our skilled coaches are dedicated to helping you advance through discipline and focus.</span>
+                    To help you train like an athlete—strong, confident, and goal-driven—each session is designed with customized routines, intelligent progression, and practical instruction.
+                    <br><br>
+                    All of our trainers complete more than 100 hours of in-house training centered on strength conditioning, perfect form, program design, and client-specific methods for
+                    coaching to guarantee quality in every workout. Our head coach created this special training program, which raises the bar for the industry and provides all members
+                    with access to the same top-notch training.
+                </p>
             </div>
         </div>
+
         <div class="image-grid">
-            <div class="grid-item"><img src="./assets/L-Men.jpeg"></div>
-            <div class="grid-item"><img src="./assets/L-Men.jpeg"></div>
-            <div class="grid-item"><img src="./assets/L-Men.jpeg"></div>
-            <div class="grid-item"><img src="./assets/L-Men.jpeg"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
+            <?php
+            include 'connection.php';
+            $res = $con->query("SELECT image_name FROM Images WHERE image_type = 'ourmethod' ORDER BY images_id ASC");
+            while ($row = $res->fetch_assoc()):
+            ?>
+                <div class="grid-item">
+                    <img src="./assets/<?= htmlspecialchars($row['image_name']) ?>" alt="method image">
+                </div>
+            <?php endwhile; ?>
         </div>
     </section>
 
-    <section id="shop" class="section shop">
+<section id="shop" class="section shop">
     <div class="shop-header">
         <h2>Shop the Look</h2>
         <p>Explore our curated selection of fitness apparel and accessories.</p>
     </div>
-    </section>
 
-    <!-- Modal Structure -->
-    <div id="product-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h3 id="modal-product-name"></h3>
-        <p id="modal-product-description"></p>
-        <p><strong>Price:</strong>
-            <span id="modal-product-price">2500</span>
-        </p>
-        <p><strong>Quantity:</strong>
-            <span id="modal-product-quantity">15</span>
-        </p>
+    <div class="shop-products">
+        <?php if (!empty($shop_products)): ?>
+            <?php foreach ($shop_products as $product): ?>
+                <div class="product-card">
+                    <div class="product-card__figure">
+                        <a href="products-transaction.php?product_id=<?= $product['product_id'] ?>" class="product-card__media">
+                            <?php if (!empty($product['image'])): ?>
+                                <img
+                                    src="data:image/jpeg;base64,<?= base64_encode($product['image']) ?>"
+                                    alt="<?= htmlspecialchars($product['product_name']) ?>"
+                                    class="product-card__image product-card__image--primary"
+                                    loading="lazy"
+                                >
+                            <?php else: ?>
+                                <img
+                                    src="assets/default-product.jpg"
+                                    alt="Default Product Image"
+                                    class="product-card__image product-card__image--primary"
+                                    loading="lazy"
+                                >
+                            <?php endif; ?>
+                        </a>
+                    </div>
+                    <div class="product-card__info">
+                        <div class="v-stack justify-items-center gap-2">
+                            <div class="v-stack justify-items-center gap-1">
+                                <a href="products-transaction.php?product_id=<?= $product['product_id'] ?>" class="product-title h6">
+                                    <?= htmlspecialchars($product['product_name']) ?>
+                                </a>
+                                <div class="color-name"><?= htmlspecialchars($product['category']) ?></div>
+                                <div class="price-list">
+                                    <span class="price h6 text-subdued">₱<?= number_format($product['price'], 2) ?></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div style="text-align:center; padding:2rem; font-weight:bold;">
+                No products available yet.
+            </div>
+        <?php endif; ?>
     </div>
-    </div>
+</section>
 
     <section id="contact" class="section contact" style="background-color: #111;">
         <div class="contact-container">

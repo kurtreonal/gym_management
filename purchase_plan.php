@@ -3,37 +3,50 @@ session_start();
 include 'connection.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: sign-in.php");
-    exit;
+    header('Location: sign-in.php');
+    exit();
 }
 
 $user_id = $_SESSION['user_id'];
-$plan_id = intval($_GET['plan_id']);
+$plan_id = $_GET['plan_id'] ?? null;
 
-// Get user info
-$stmt = $con->prepare("SELECT first_name, last_name FROM users WHERE user_id = ?");
+// Step 1: Check if user already has a membership
+$stmt = $con->prepare("SELECT membership_id FROM Users WHERE user_id = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
-$user_result = $stmt->get_result()->fetch_assoc();
+$stmt->bind_result($existing_plan_id);
+$stmt->fetch();
+$stmt->close();
 
-$first_initial = strtoupper(substr($user_result['first_name'], 0, 1));
-$last_initial = strtoupper(substr($user_result['last_name'], 0, 1));
-$date = new DateTime();
-$day = $date->format('d');
-$month = $date->format('m');
-$today = $date->format('Y-m-d');
-$expiry = $date->modify('+1 month')->format('Y-m-d');
+if ($existing_plan_id !== null) {
+    // User already has a membership
+    echo "<script>
+        alert('You already have an active membership plan. Please contact support to make changes.');
+        window.location.href = 'pricing.php';
+    </script>";
+    exit();
+}
 
-// Generate FCID
-$random = str_pad(mt_rand(0, 9999), 4, '0', STR_PAD_LEFT);
-$fcid = "{$first_initial}{$last_initial}{$day}{$month}{$plan_id}{$random}";
-
-// Update user record with membership info
-$update = $con->prepare("UPDATE users SET membership_id=?, fcid=?, validation_date=?, expiry_date=? WHERE user_id=?");
-$update->bind_param("isssi", $plan_id, $fcid, $today, $expiry, $user_id);
-$update->execute();
-
-header("Location: account_settings.php");
-exit;
-
+// Step 2: Proceed with assigning the membership to the user
+if ($plan_id) {
+    $stmt = $con->prepare("UPDATE Users SET membership_id = ? WHERE user_id = ?");
+    $stmt->bind_param("ii", $plan_id, $user_id);
+    if ($stmt->execute()) {
+        echo "<script>
+            alert('Membership plan purchased successfully!');
+            window.location.href = 'dashboard.php';
+        </script>";
+    } else {
+        echo "<script>
+            alert('Error purchasing membership plan.');
+            window.location.href = 'pricing.php';
+        </script>";
+    }
+    $stmt->close();
+} else {
+    echo "<script>
+        alert('No plan selected.');
+        window.location.href = 'pricing.php';
+    </script>";
+}
 ?>

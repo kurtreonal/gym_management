@@ -22,7 +22,8 @@
             </div>
             <div class="_tab-group_t5b5j_88">
                 <div class="_tab-group-content">
-                <div class="_desktop-label_t5b5j_103">Orders</div>
+                <div class="_desktop-label_t5b5j_103">Products and Orders</div>
+                    <a class="_tab_1n4dr_79 _active_1n4dr_101" href="productDetails.php"><h4>Products Details</h4></a>
                     <a class="_tab_1n4dr_79 _active_1n4dr_101" href="OrderDetails.php"><h4>Orders Details</h4></a>
                 </div>
             </div>
@@ -47,8 +48,7 @@
             <div class="_tab-group_t5b5j_88">
                 <div class="_tab-group-content">
                     <div class="_desktop-label_t5b5j_103">Edit Images</div>
-                    <a class="_tab_1n4dr_79" href="method_images.php"><h4>Method Images</h4></a>
-                    <a class="_tab_1n4dr_79" href="background_images.php"><h4>Background Images</h4></a>
+                    <a class="_tab_1n4dr_79" href="images.php"><h4>Images</h4></a>
                 </div>
             </div>
             <div class="_tab-group_t5b5j_88">

@@ -1,5 +1,10 @@
 <?php
 include 'connection.php';
+session_start();
+$admin_id = $_SESSION['admin_id'] ?? null;
+if (!$admin_id) {
+    header("Location: AdminAccess.php"); exit();
+}
 
 // Fetch orders with related user and address info (optional join)
 $sql = "SELECT o.order_id, u.first_name, u.last_name, a.city, o.admin_id, o.status, o.created_date
@@ -26,9 +31,9 @@ $result = $con->query($sql);
                     <th>Order ID</th>
                     <th>User</th>
                     <th>City</th>
-                    <th>Admin ID</th>
                     <th>Status</th>
                     <th>Created</th>
+                    <th>Status</th>
                 </tr>
                 <?php
                 if ($result->num_rows > 0) {
@@ -37,9 +42,8 @@ $result = $con->query($sql);
                         echo "<td>{$row['order_id']}</td>";
                         echo "<td>{$row['first_name']} {$row['last_name']}</td>";
                         echo "<td>{$row['city']}</td>";
-                        echo "<td>{$row['admin_id']}</td>";
-                        echo "<td><span class='status {$row['status']}'>{$row['status']}</span></td>";
                         echo "<td>{$row['created_date']}</td>";
+                        echo "<td><span class='status {$row['status']}'>{$row['status']}</span></td>";
                         echo "</tr>";
                     }
                 } else {
